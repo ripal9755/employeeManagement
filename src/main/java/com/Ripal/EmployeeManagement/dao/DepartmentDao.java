@@ -38,4 +38,12 @@ public class DepartmentDao {
     public Department saveAndReturn(Department dept) {
         return repo.save(dept);
     }
+
+    public Department validateAndGetByName(String departName){
+        Optional<Department> opt = repo.findByNameAndIsExistTrue(departName);
+        if(opt.isEmpty()){
+            throw new NotFoundException("Departmen name is invalid");
+        }
+        return opt.get();
+    }
 }
