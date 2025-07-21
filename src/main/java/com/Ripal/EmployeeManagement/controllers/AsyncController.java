@@ -7,13 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.ExecutionException;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/async")
 public class AsyncController {
     private final AsyncService asyncService;
     @GetMapping
-    public ResponseEntity<String> startAsyncProgramming(){
+    public ResponseEntity<String> startAsyncProgramming() throws ExecutionException, InterruptedException {
         asyncService.asyncprogramming();
         return ResponseEntity.ok("Process Started");
     }
