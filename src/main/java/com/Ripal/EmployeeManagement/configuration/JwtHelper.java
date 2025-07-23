@@ -1,4 +1,4 @@
-package com.param.jwt.configuration;
+package com.Ripal.EmployeeManagement.configuration;
 
 import java.util.Date;
 import java.util.HashMap;
