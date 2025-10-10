@@ -25,4 +25,11 @@ public class EmployeeRequestDto {
 
     @NotNull(message="Employee should have salary")
     private Double salary;
+
+    @NotNull(message="Username should not be blank")
+    private String userName;
+
+    @NotNull(message="Password should not be blank")
+    private String password;
+
 }

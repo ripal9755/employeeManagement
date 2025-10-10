@@ -19,7 +19,14 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     //@NotBlank(message="Employee name can not be null or empty")
+    @Column(nullable = false, unique=true)
+    private String username;
+
+    @Column(nullable=false)
+    private String password;
+
     private String name;
 
     @Column(name="is_deleted")

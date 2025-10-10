@@ -50,4 +50,9 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeService.findAllEmployees(pageable));
     }
 
+    @GetMapping("/simple")
+    public String getSimple(){
+        return "THis is from simple";
+    }
+
 }

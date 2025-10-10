@@ -30,6 +30,8 @@ public class EmployeeService {
                 .employeementType(dto.getEmployementType())
                 .department(department)
                 .salary(dto.getSalary())
+                .username(dto.getUserName())
+                .password(dto.getPassword())
                 .build();
         return employeeDao.saveAndGet(employee);
     }
