@@ -26,3 +26,44 @@ jobs:
           with:
             name: myapp-jar
             path: target/*.jar
+    deploy:
+      needs: build
+      runs-on: ubuntu-latest
+
+      steps:
+        -name: Downlaod Jar Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: myapp-jar
+          path: target/
+
+        -name: Deploy to EC2
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host:18.222.251.53
+          username:ec2-user
+          key:-----BEGIN RSA PRIVATE KEY-----
+          MIIEowIBAAKCAQEA0DNWFE7+AH+H/9z52rLgfte7ZpeqZ4F4TF8FsKgGSdZbfh++yGlNz9AEHOQ1woKb8R+jcOA8uQpYNYHTGZLLNzrLwQ9+2gVfkvEo61EAlsaewbhoKeCYXfS1+NYJ1REPxE8ZDJA4pck6OZqbZmmyZfDqjOu2s5JKM+sOBQB21S98PsF9
+            sfWma32zpuv2luEzU7bLASiMYJdHJiEV97CPLShnHn7oYl7viMIkiTYFpK7/Scs5
+            f9OvrOm1geV6E9PqQG21d2s741HV1poWAe8z+xVlV/x3u3Wkeq8YSfTAoPALCzO3
+            dn8WAABPP/wG9T9qHuwaCydY4/qoerY6+lk21wIDAQABAoIBAEH8c0S+gGxh/xWN
+            0LaKyPIKp79tRDnH4/u4hhImPs/6G0dPAmV8UogRsqwBfDRotsnmMCPfPf+bkrdq
+            rSBG0RdxEBDhO2AYIeFtg32JT7l5u+lD6+eR4lis7VuvYrBf1vJt6097CikpLMYD
+            BUuhJkR+5afCMUaaj+ACmI/nRMJt1k8O9OAdMIwzyYstE8usSwB8zFwJ1sQYyrM+
+            8yKxrf7aMEpjHxqEPFUVXnHrTNr75pjDN2pArOZ2fh2J+heLwyXpeJRHJd3Xz5zh
+            IrsJN195aHynRa0kbXjVMnH7ltG1OkMGTgFfGxZGI4Ef7HXG5RMez3UnOTh+wGbV
+            b5O1NYkCgYEA/wJHC2hnDvV6NnRXhTAdU5TIN4o2Jav6Xud4cMx0FvkaSjJ5T0Bx
+            azimYQI5fycKRRZVerbZu/xHmax0ChyW0EKyhmrpdF1M1N31QYiVtVa3Mht4RyXD
+            WX9k+xg3IYFzdMbXsRsfZ+SevvcjutUyNi/iz9sJfTdYQbNMRa5MOE0CgYEA0QJ8
+            it/lIPb9RKOg15cNizZTUkruq057bEsDOnPCEA00cQtiM4S1Hr1cHiYHntqDsISP
+            V4JXZbGA4tSwrkxuFZhdIGj1jrfgrUCQB8fF/3QCArNE/v8llaR6Jym0V+f8t33l
+            t81aU1E2oGCp4xJXiTjAtrvMYtUY6AwgiKnxvbMCgYAoHO6Z/8k+VCTuTey6ebAT
+            RrMb8XTFBkFzDkwmyjJ0rqiRBVGJwuRUbmvVlKkAtF5sMbAuhnbHmE6XAMacFJUw
+            m11DwauJb2e3kFaVAWwzQzm7+xA3eNw6xsxWpx98+MT1mJWzOUX+bLr/5RZMvF6S
+            oYO3GIhslvkeFJsp1toMfQKBgAKMVDZhOmrnd/kBQbG/LrQWyndDYJuIDmsokvaA
+            eMo3Tv9d0ymroYWpa1kWv5sJMPfS9ehsN2KPAnJBg5Hsbp8mx2Pgw7WkukGCev8N
+            SXWu1WNxChNNywiDA9Y8ZO15b5RRHZ7bCxHe+JqF8yxIifarUXYo3foKfQ4/L5pa
+            8A6PAoGBAJA8x66qBxfQ0kyFD8tiGRbyC0r/m37KKHtRq/CJRHK2l9/atffWOmbn
+            ms1IuC5xHW2Mpr7StNev1RSpAZht9cxPxe7zoQwj5JOz7zshqQPxkJ6VN4Ruqpjt
+            Ss61MbjNiB3odezTK9uBH0mQ9oTlhXPOHN9myNbfHsmeQRephCFo
+            -----END RSA PRIVATE KEY-----%          
